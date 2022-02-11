@@ -3,17 +3,14 @@ import { useState, useEffect } from "react";
 import Movie from "./components/Movie";
 
 import classes from "./App.module.css";
-
-const apiKey = "e03c68c6aa776005801618ceb0dd485a";
-
-const moviesUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+import config from "./keys/apiKeys";
 
 function App() {
   const [films, setFilms] = useState([]);
   const [filteredFilms, setFilteredFilms] = useState([]);
 
   const fetchFilms = async () => {
-    const response = await fetch(moviesUrl);
+    const response = await fetch(config.moviesUrl);
     const data = await response.json();
     setFilms(data.results);
     console.log(data.results);

@@ -2,5 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   list-style-type: none;
-  width: 100vw;
+  width: 100%;
+  margin-top: 10rem;
+  row-gap: 4rem;
 }
