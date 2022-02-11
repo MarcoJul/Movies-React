@@ -5,7 +5,7 @@ import Movie from "./components/Movie";
 import classes from "./App.module.css";
 import config from "./keys/apiKeys";
 import Filter from "./components/Filter";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -32,14 +32,16 @@ function App() {
         setActiveGenre={setActiveGenre}
       />
       <motion.div layout className={classes.grid}>
-        {filteredmovies.map((movie) => (
-          <Movie
-            key={movie.id}
-            id={movie.id}
-            picture={movie.backdrop_path}
-            title={movie.title}
-          />
-        ))}
+        <AnimatePresence>
+          {filteredmovies.map((movie) => (
+            <Movie
+              key={movie.id}
+              id={movie.id}
+              picture={movie.backdrop_path}
+              title={movie.title}
+            />
+          ))}
+        </AnimatePresence>
       </motion.div>
     </div>
   );
