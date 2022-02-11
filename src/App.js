@@ -4,25 +4,35 @@ import Movie from "./components/Movie";
 
 import classes from "./App.module.css";
 import config from "./keys/apiKeys";
+import Filter from "./components/Filter";
+import { motion } from "framer-motion";
 
 function App() {
-  const [films, setFilms] = useState([]);
-  const [filteredFilms, setFilteredFilms] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [filteredmovies, setFilteredmovies] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(28);
 
-  const fetchFilms = async () => {
+  const fetchmovies = async () => {
     const response = await fetch(config.moviesUrl);
     const data = await response.json();
-    setFilms(data.results);
-    console.log(data.results);
+    setMovies(data.results);
+    setFilteredmovies(data.results);
   };
 
   useEffect(() => {
-    fetchFilms();
+    fetchmovies();
   }, []);
+
   return (
     <div className={classes.app}>
-      <ul className={classes.grid}>
-        {films.map((movie) => (
+      <Filter
+        movies={movies}
+        setFiltered={setFilteredmovies}
+        activeGenre={activeGenre}
+        setActiveGenre={setActiveGenre}
+      />
+      <motion.div layout className={classes.grid}>
+        {filteredmovies.map((movie) => (
           <Movie
             key={movie.id}
             id={movie.id}
@@ -30,7 +40,7 @@ function App() {
             title={movie.title}
           />
         ))}
-      </ul>
+      </motion.div>
     </div>
   );
 }

@@ -1,0 +1,26 @@
+.filters {
+  display: flex;
+  margin: 10rem 0 3rem;
+  gap: 1.5rem;
+}
+
+.filters button {
+  font-family: inherit;
+  font-size: 1.6rem;
+  padding: 0.5rem 2rem;
+  border-radius: 1000px;
+  border-color: blueviolet;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filters button:hover {
+  background-color: blueviolet;
+  color: #fff;
+}
+
+button.active {
+  background-color: blueviolet;
+  color: #fff;
+}

@@ -1,8 +1,10 @@
 import classes from "./Movie.module.css";
 
+import { motion } from "framer-motion";
+
 const Movie = (props) => {
   return (
-    <li className={classes.card}>
+    <motion.div layout className={classes.card}>
       <p className={classes.title}>{props.title}</p>
       <div className={classes.imgContainer}>
         <img
@@ -10,7 +12,7 @@ const Movie = (props) => {
           className={classes.image}
         />
       </div>
-    </li>
+    </motion.div>
   );
 };
 
